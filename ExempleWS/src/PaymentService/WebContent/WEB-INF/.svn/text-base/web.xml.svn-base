@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<display-name>PaymentService</display-name>
+	<description>PaymentService</description>
+	
+	<listener>
+		<description>Listener responsavel por desabilitar o JAMON</description>
+		<listener-class>br.com.cea.commons.util.jamon.JamonListener</listener-class>
+	</listener>
+	<filter>
+		<description>Filtro responsavel por monitor os requests</description>
+		<filter-name>jamon</filter-name>
+		<filter-class>com.jamonapi.http.JAMonServletFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>jamon</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>	
+	
+	<listener>
+		<description>Log4JListener</description>
+		<listener-class>br.com.cea.commons.log4j.Log4JListener</listener-class>
+	</listener>
+
+	<!--  Listener para inicializacao do Webservice através do JAX-WS -->
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+    
+    <servlet>
+        <description>JAX-WS endpoint</description>
+        <display-name>service</display-name>
+        <servlet-name>service</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+  
+    <servlet-mapping>
+        <servlet-name>service</servlet-name>
+        <url-pattern>/service/*</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,91 @@
+package br.com.cea.ecommerce.affiliated.vo;
+
+import java.util.Date;
+
+public class DependentVO {
+
+	private String cdEmp;
+	
+	private Long nuChp;
+	
+	private Date dtAds;
+	
+	private Date dtDss;
+	
+	private String name;
+	
+	private String nuCpf;
+	
+	private Date dateLastAction;
+	
+	private String status;
+
+	public DependentVO() {
+		super();
+	}
+
+	public String getCdEmp() {
+		return cdEmp;
+	}
+
+	public void setCdEmp(String cdEmp) {
+		this.cdEmp = cdEmp;
+	}
+
+	public Long getNuChp() {
+		return nuChp;
+	}
+
+	public void setNuChp(Long nuChp) {
+		this.nuChp = nuChp;
+	}
+
+	public Date getDtAds() {
+		return dtAds;
+	}
+
+	public void setDtAds(Date dtAds) {
+		this.dtAds = dtAds;
+	}
+
+	public Date getDtDss() {
+		return dtDss;
+	}
+
+	public void setDtDss(Date dtDss) {
+		this.dtDss = dtDss;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNuCpf() {
+		return nuCpf;
+	}
+
+	public void setNuCpf(String nuCpf) {
+		this.nuCpf = nuCpf;
+	}
+
+	public Date getDateLastAction() {
+		return dateLastAction;
+	}
+
+	public void setDateLastAction(Date dateLastAction) {
+		this.dateLastAction = dateLastAction;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+}

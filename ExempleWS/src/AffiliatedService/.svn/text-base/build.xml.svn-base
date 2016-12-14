@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="help" name="AffiliatedService">
+   
+    <property name="java.home" location="C:\Program Files\Java\jdk160_45\bin" />
+    <property name="app.name" value="AffiliatedService" />
+	<property name="web.dir" location="WebContent" />
+	<property name="src.dir" location="src" />
+    <property name="classes.dir" location="build" />
+    <property name="ws.src.dir" location="ws-src" />
+    <property name="app.dir" location="app" />
+   
+    <target name="help">
+        <echo message="********************************************************************" />
+        <echo message="**             UTILIZE UM OU MAIS TARGETS ABAIXO...               **" />
+        <echo message="********************************************************************" />
+        <echo message="" />
+        <echo message="** PREPRACAO DOS OBJETOS DO SISTEMA ********************************" />
+        <echo message="" />
+        <echo message="cleanAll......Exclui e cria os diretorios" />
+        <echo message="wsimport-Local.........Cria os clients dos arquivos resources" />
+        <echo message="" />
+        <echo message="** GERACAO DE OBJETOS DO SISTEMA ***********************************" />
+        <echo message="" />
+        <echo message="war........Gera o JAR do Sistema" />
+        <echo message="" />
+    </target>
+   
+    <target name="cleanAll">
+        <!--<delete dir="${classes.dir}" />-->
+        <delete dir="${ws.src.dir}" />
+        <!--<delete dir="${app.dir}" />-->
+        <!--<mkdir dir="${classes.dir}" />-->
+        <mkdir dir="${ws.src.dir}" />
+        <!--<mkdir dir="${app.dir}" />-->
+    </target>
+	
+	<target name="wsimport-AffiliatedService">
+        <exec executable="${java.home}/../bin/wsimport">
+            <arg line="-extension -Xnocompile -XadditionalHeaders -keep -wsdllocation WEB-INF/wsdl/EBS/CeA/ecommerce/Affiliated.wsdl -s ./ws-src
+                -d ./build WebContent/WEB-INF/wsdl/EBS/CeA/ecommerce/Affiliated.wsdl -b WebContent/WEB-INF/wsdl/EBS/CeA/ecommerce/AffiliatedEBS.xsd" />
+        </exec>
+    </target>
+	
+	<target depends="cleanAll, wsimport-AffiliatedService" name="wsimport">
+		<echo message="Gerando as classes de servicos" />
+    </target>
+   
+    <target name="compile" description="compile the source " >
+        <javac srcdir="${ws.src.dir}" destdir="${classes.dir}/classes"/>
+    </target>
+	
+	<target name="build.timestamp">        
+		<tstamp>
+			<format property="build.timestamp" pattern="dd/MM/yyyy hh:mm:ss"/>
+		</tstamp>
+		<echo message="Pacote gerado em ${build.timestamp}" file="WebContent/version.txt"/>
+	</target>
+	
+    <target depends="compile, build.timestamp" name="war" description="Generates AffiliatedService.war">
+        <delete file="${app.dir}/${app.name}.war" />
+    	<war destfile="${app.dir}/${app.name}.war" webxml="WebContent/WEB-INF/web.xml" update="true">
+            <classes dir="build/classes"/>
+            <fileset dir="WebContent">
+                <exclude name="WEB-INF/web.xml"/>
+            </fileset>
+        </war>
+    </target>
+   
+</project>

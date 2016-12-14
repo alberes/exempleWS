@@ -1,0 +1,31 @@
+10
+
+dir
+160
+svn+ssh://10.16.1.107/svn/repositories/ecommerce/source/java/EcommerceService/ws-src/com
+svn+ssh://10.16.1.107/svn/repositories/ecommerce
+
+
+
+2014-12-26T22:00:38.360093Z
+102
+br3bsb
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3f9d1e19-ae08-0510-b938-31a5c6f0c2dc
+
+microsoft
+dir
+

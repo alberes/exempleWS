@@ -1,0 +1,101 @@
+<wsdl:definitions name="InvoiceToSynchroV1" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/invoice/synchro/v1" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/invoice/synchro/v1" 
+	xmlns:cea="http://www.cea.com.br/EBO/CEA/v1">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/invoice/synchro/v1">
+			
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/commons/MetaInformacaoEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/BusinessFaultEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/TechnicalFaultEBO_v1.xsd"/>
+		
+			<xsd:element name="sendInvoiceRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="invoiceId" type="xsd:string" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>
+									Invoice number to be sent to Synchro. 
+									If invoiceId is null, all invoices with status staged will be sent.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="sendInvoiceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="invoices" type="tns:invoices"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:complexType name="invoices">
+				<xsd:sequence>
+					<xsd:element name="invoiceId" type="xsd:string" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<wsdl:message name="sendInvoiceRequestMessage">
+		<wsdl:part element="tns:sendInvoiceRequest" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="sendInvoiceResponseMessage">
+		<wsdl:part element="tns:sendInvoiceResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="MetaInformacao_Message">
+   		<wsdl:part name="header" element="cea:MetaInformacao"/>
+  	</wsdl:message>
+	<wsdl:message name="TechnicalFaultMsg">
+		<wsdl:part name="TechnicalFault" element="cea:TechnicalFault"/>
+	</wsdl:message>
+	<wsdl:message name="BusinessFaultMsg">
+		<wsdl:part name="BusinessFault" element="cea:BusinessFault"/>
+	</wsdl:message>
+	
+	
+	<wsdl:portType name="sendInvoiceToSynchroPort">
+		<wsdl:operation name="sendInvoiceToSynchro">
+			<wsdl:input message="tns:sendInvoiceRequestMessage"/>
+			<wsdl:output message="tns:sendInvoiceResponseMessage"/>
+			<wsdl:fault name="TechnicalFault" message="tns:TechnicalFaultMsg"/>
+			<wsdl:fault name="BusinessFault" message="tns:BusinessFaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	
+	<wsdl:binding name="sendInvoiceToSynchroBinding" type="tns:sendInvoiceToSynchroPort">
+		<soap:binding style="document" transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
+		<wsdl:operation name="sendInvoiceToSynchro">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:MetaInformacao_Message" part="header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="TechnicalFault">
+				<soap:fault name="TechnicalFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="BusinessFault">
+				<soap:fault name="BusinessFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	
+	<wsdl:service name="sendInvoiceToSynchroService">
+		<wsdl:port binding="tns:sendInvoiceToSynchroBinding" name="sendInvoiceToSynchroService">
+			<soap:address location="http://www.example.org/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

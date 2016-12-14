@@ -1,0 +1,39 @@
+package br.com.cea.ecommerce.synchro.bo;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+import br.com.cea.commons.exception.BusinessException;
+import br.com.cea.commons.exception.DAOException;
+import br.com.cea.ecommerce.invoice.dao.InvoiceDAO;
+import br.com.cea.ecommerce.invoice.dao.InvoiceDAOImp;
+import br.com.cea.ecommerce.invoice.vo.InvoiceVO;
+import br.com.cea.ecommerce.synchro.dao.SynchroDAO;
+
+public class SynchroBO {
+	
+	private Logger logger = LogManager.getLogger(getClass());
+	
+	public void sendInvoice(String invoiceId) throws Exception{
+		InvoiceDAO invoiceDAO = new InvoiceDAOImp(null);
+		SynchroDAO synchroDAO = new SynchroDAO(null);
+		try{
+			InvoiceVO vo = invoiceDAO.getInvoiceById(invoiceId);
+			if(vo == null){
+				throw new BusinessException("Itens nao encontrados");
+			}
+			logger.debug("Invoice retrieved: " + invoiceId);
+			
+			synchroDAO.insertInvoice(vo);
+			synchroDAO.commit();
+			logger.debug("Invoice sent to Synchro: " + invoiceId);
+		} catch (DAOException e){
+			logger.error("Falha no acesso ao banco de dados", e);
+			synchroDAO.rollback();
+			throw new Exception(e);
+		} finally {
+			invoiceDAO.close();
+			synchroDAO.close();
+		}
+	}
+}

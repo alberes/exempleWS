@@ -1,0 +1,62 @@
+<wsdl:definitions name="OrderWevoV1" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/order/wevo/v1" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/order/wevo/v1" 
+	xmlns:cea="http://www.cea.com.br/EBO/CEA/v1">
+	
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/order/wevo/v1">
+			<xsd:include schemaLocation="OrderWevo.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/BusinessFaultEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/TechnicalFaultEBO_v1.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="OrderRequest_Message"/>
+	<wsdl:message name="QuantityOrderResponse_Message">
+		<wsdl:part name="parameters" element="tns:QuantityUpdatedResponse"/>
+	</wsdl:message>
+	<wsdl:message name="TechnicalFaultMsg">
+		<wsdl:part name="TechnicalFault" element="cea:TechnicalFault"/>
+	</wsdl:message>
+	<wsdl:message name="BusinessFaultMsg">
+		<wsdl:part name="BusinessFault" element="cea:BusinessFault"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="OrderWevo_PortType">
+		<wsdl:operation name="sendOrderToWevo">
+			<wsdl:input message="tns:OrderRequest_Message"/>
+			<wsdl:output message="tns:QuantityOrderResponse_Message"/>
+			<wsdl:fault name="TechnicalFault" message="tns:TechnicalFaultMsg"/>
+			<wsdl:fault name="BusinessFault" message="tns:BusinessFaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="OrderWevo_Binding" type="tns:OrderWevo_PortType">
+		<soap:binding transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
+		<wsdl:operation name="sendOrderToWevo">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="TechnicalFault">
+				<soap:fault name="TechnicalFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="BusinessFault">
+				<soap:fault name="BusinessFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="OrderWevo_Service">
+		<wsdl:port name="OrderWevo_Service" binding="tns:OrderWevo_Binding">
+			<soap:address location="http://localhost:7001/Order/Wevo/OrderWevoV1"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

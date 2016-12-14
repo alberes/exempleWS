@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="teste">
+	 <import file="others.xml"/>
+	<target name="testePlus">
+		<plus param1="125" param2="13" property="XPTO" />
+		<echoproperties prefix="XPTO" />
+	</target>
+
+	<target name="testeSplit">
+		<split value="a;b;c" sep=";" prefix="xxx" />
+		<echoproperties prefix="xxx" />
+	</target>
+
+	<target name="testeLoop">
+		<split value="a;b;c" sep=";" prefix="params" />
+		<echoproperties prefix="params" />
+		<loop array="params" target="doStuff"/>
+	</target>
+
+	<macrodef name="myTask">
+	   <sequential>
+	   		<echo>array.indice:${array.indice} array.value:${array.value}</echo>
+	   </sequential>
+	</macrodef>
+	
+	<target name="doStuff" >
+		<echo>array.indice:${array.indice} array.value:${array.value}</echo>
+		<myTask/>
+	</target>
+
+
+</project>

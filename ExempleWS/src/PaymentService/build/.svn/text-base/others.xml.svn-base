@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="help">
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="./ant-contrib-1.0b3.jar"/>
+	  </classpath>
+	</taskdef>
+	
+	<scriptdef name="plus" language="javascript">
+		<attribute name="param1" />
+		<attribute name="param2" />
+		<attribute name="property" />
+		<![CDATA[
+			var i = parseInt(attributes.get("param1"));
+			var j = parseInt(attributes.get("param2"));
+			var total = i+j;
+			project.setNewProperty(attributes.get("property"),total);
+         ]]>
+	</scriptdef>
+
+	<scriptdef name="split" language="javascript">
+		<attribute name="value" />
+		<attribute name="sep" />
+		<attribute name="prefix" />
+		<![CDATA[
+		    java.lang.System.out.println("Executando o SPLIT: value["+attributes.get("value")+"] - sep["+attributes.get("sep") +"] - prefix["+attributes.get("prefix")+"]");
+             values = attributes.get("value").split(attributes.get("sep"));
+		     java.lang.System.out.println("Valores encontrados:"+values.length);
+			 project.setNewProperty(attributes.get("prefix")+".size",values.length);
+             for(i=0; i<values.length; i++) {
+                 project.setNewProperty(attributes.get("prefix")+"["+i+"]",values[i]);
+				java.lang.System.out.println(attributes.get("prefix")+"["+i+"] = " +values[i] );
+             }
+         ]]>
+	</scriptdef>
+
+	<path id="jaxws.classpath">
+		<pathelement location="${java-home-lib}/tools.jar" />
+		<fileset dir="${WEB_CONTENT}/WEB-INF/lib">
+			<include name="*.jar" />
+			<exclude name="j2ee.jar" />
+			<exclude name="crimson*.jar" />
+			<exclude name="gnujaxp*.jar" />
+		</fileset>
+	</path>
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+		<classpath refid="jaxws.classpath" />
+	</taskdef>
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath refid="jaxws.classpath" />
+	</taskdef>
+	
+
+	<scriptdef name="loop" language="javascript">
+		<attribute name="target" />
+		<attribute name="array" />
+		<![CDATA[
+			 target = attributes.get("target");
+			 array = attributes.get("array");
+		  	 size  = project.getProperty(array+".size");
+		     java.lang.System.out.println("array["+array+"] size["+size+"] target["+target+"]");
+             for(i=0; i<size; i++) {
+				antcall=project.createTask("antcall");
+				antcall.init();
+				antcall.setTarget(target);
+				antcallParam1=antcall.createParam();
+				antcallParam1.setName("array.indice");
+				antcallParam1.setValue(i);
+				antcallParam2=antcall.createParam();
+				antcallParam2.setName("array.value");
+				antcallParam2.setValue(project.getProperty(array+"["+i+"]"));
+				antcall.execute();		
+             }
+         ]]>
+	</scriptdef>
+	<scriptdef name="anotherloop" language="javascript">
+		<attribute name="target" />
+		<attribute name="init" />
+		<attribute name="end" />
+		<![CDATA[
+			 target = attributes.get("target");
+			 init = parseInt(attributes.get("init"));
+			 end = parseInt(attributes.get("end"));
+		     java.lang.System.out.println("init["+init+"] end["+end+"] target["+target+"]");
+             for(i=init; i<end; i++) {
+				antcall=project.createTask("antcall");
+				antcall.init();
+				antcall.setTarget(target);
+				antcallParam=antcall.createParam();
+				antcallParam.setName("indice");
+				antcallParam.setValue(i);
+				antcall.execute();		
+             }
+         ]]>
+	</scriptdef>	
+
+
+
+</project>

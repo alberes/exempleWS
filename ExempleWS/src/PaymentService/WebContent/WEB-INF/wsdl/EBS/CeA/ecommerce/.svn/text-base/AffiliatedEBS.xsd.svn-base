@@ -1,0 +1,24 @@
+<schema elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/affiliated/v1" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/affiliated/v1">
+ 
+	<include schemaLocation="../../../EBO/CeA/v1/ecommerce/AffiliatedEBO.xsd"/>
+	
+	<element name="AffiliatedRequest">
+		<complexType>
+			<sequence>
+				<element name="StartDate" type="dateTime" minOccurs="1" maxOccurs="1"/>
+				<element name="FinishDate" type="dateTime"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="AffiliatedResponse">
+		<complexType>
+			<sequence>
+				<element name="affiliated" type="tns:Affiliated" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>	
+</schema>

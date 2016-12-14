@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints
+    xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime'
+    version="2.0">
+    
+      <endpoint
+        name='invoice'
+        interface='br.com.cea.ebs.cea.ecommerce.invoice.v1.InvoicePortType'
+        implementation='br.com.cea.ecommerce.invoice.ws.InvoicePortTypeImp'
+        wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/InvoiceV1.wsdl'        
+        service='{http://www.cea.com.br/EBS/CEA/ecommerce/invoice/v1}Invoice_Service'
+        port='{http://www.cea.com.br/EBS/CEA/ecommerce/invoice/v1}Invoice_Service'
+        binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+        url-pattern='/service/invoiceV1' />
+        
+     <endpoint
+        name='order'
+        interface='br.com.cea.ebs.cea.ecommerce.order.v1.OrderPortType'
+        implementation='br.com.cea.ecommerce.order.ws.OrderPortTypeImp'
+        wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/OrderV1.wsdl'        
+        service='{http://www.cea.com.br/EBS/CEA/ecommerce/order/v1}Order_Service'
+        port='{http://www.cea.com.br/EBS/CEA/ecommerce/order/v1}Order_Service'
+        binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+        url-pattern='/service/orderV1' />
+        
+    <endpoint name='invoiceToSynchro' 
+		interface='br.com.cea.ebs.cea.ecommerce.invoice.synchro.v1.SendInvoiceToSynchroPort'
+		implementation='br.com.cea.ecommerce.synchro.ws.SendInvoiceToSynchroPortImpl'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/InvoiceToSynchroV1.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/invoice/synchro/v1}sendInvoiceToSynchroService'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/invoice/synchro/v1}sendInvoiceToSynchroService'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/invoiceToSynchroV1' />
+		
+	<endpoint name='orderToWevo' 
+		interface='br.com.cea.ebs.cea.ecommerce.order.wevo.v1.OrderWevoPortType'
+		implementation='br.com.cea.ecommerce.wevo.ws.OrderWevoPortTypeImp'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/OrderWevo1.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/order/wevo/v1}OrderWevo_Service'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/order/wevo/v1}OrderWevo_Service'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/orderToWevoV1' />
+
+	<endpoint name='invoiceToWevo' 
+		interface='br.com.cea.ebs.cea.ecommerce.invoice.wevo.v1.InvoiceWevoPortType'
+		implementation='br.com.cea.ecommerce.invoice.ws.InvoiceWevoPortTypeImp'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/InvoiceToWevoV1.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/invoice/wevo/v1}InvoiceWevo_Service'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/invoice/wevo/v1}InvoiceWevo_Service'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/invoiceToWevoV1' />
+		
+	<endpoint name='tracking' 
+		interface='br.com.cea.ebs.cea.ecommerce.tracking.v1.TrackingPortType'
+		implementation='br.com.cea.ecommerce.tracking.ws.TrackingPortTypeImp'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/TrackingV1.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/tracking/v1}Tracking_Service'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/tracking/v1}Tracking_Service'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/trackingV1' />
+
+</endpoints>

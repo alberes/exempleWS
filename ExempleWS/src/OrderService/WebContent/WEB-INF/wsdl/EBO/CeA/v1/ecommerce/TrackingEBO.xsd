@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBO/CEA/ecommerce/tracking/v1" 
+	xmlns:tns="http://www.cea.com.br/EBO/CEA/ecommerce/tracking/v1" 
+	elementFormDefault="qualified">
+	
+	<complexType name="TrackingList">
+		<sequence>
+			<element name="Tracking" type="tns:Tracking" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Tracking">
+		<sequence>
+			<element name="OrderId" type="string" />
+			<element name="StatusDescription" type="string" />
+			<element name="StatusDate" type="dateTime" />
+		</sequence>
+	</complexType>
+	
+</schema>

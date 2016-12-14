@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729638</millis>
+  <sequence>8</sequence>
+  <logger>br.com.cea.ecommerce.base2.file.MergeFilePL</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.base2.file.MergeFilePL</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>Arquivo da loja nao encontrado.</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729639</millis>
+  <sequence>9</sequence>
+  <logger>br.com.cea.ecommerce.base2.file.MergeFilePL</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.base2.file.MergeFilePL</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.base2.file.MergeFilePL.merge(MergeFilePL.java:42)</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729639</millis>
+  <sequence>10</sequence>
+  <logger>br.com.cea.ecommerce.base2.file.MergeFilePL</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.base2.file.MergeFilePL</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.command.Base2Command.execute(Base2Command.java:31)</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729639</millis>
+  <sequence>11</sequence>
+  <logger>br.com.cea.ecommerce.base2.file.MergeFilePL</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.base2.file.MergeFilePL</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.ExecutorManager.main(ExecutorManager.java:22)</message>
+</record>
+</log>

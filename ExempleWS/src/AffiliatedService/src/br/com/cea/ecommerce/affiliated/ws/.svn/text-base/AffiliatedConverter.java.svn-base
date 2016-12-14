@@ -1,0 +1,21 @@
+package br.com.cea.ecommerce.affiliated.ws;
+
+import br.com.cea.ebs.cea.ecommerce.affiliated.v1.Affiliated;
+import br.com.cea.ecommerce.affiliated.vo.AffiliatedVO;
+import br.com.cea.ecommerce.affiliated.vo.DependentVO;
+
+public class AffiliatedConverter {
+
+	public static synchronized void copyFromAffiliatedVOToAffiliated(AffiliatedVO affiliatedVO, Affiliated affiliated){
+		affiliated.setCPF(affiliatedVO.getNuCpf());
+		affiliated.setMatricula(affiliatedVO.getNuChp());
+		affiliated.setStatus(affiliatedVO.getDtDss() == null? "ATIVO" : "INATIVO");
+	}
+	
+	public static synchronized void copyFromDependentVOToAffiliated(DependentVO dependentVO, Affiliated affiliated){
+		affiliated.setCPF(dependentVO.getNuCpf());
+		affiliated.setMatricula(dependentVO.getNuChp());
+		affiliated.setStatus(dependentVO.getDtDss() == null && "ATIVO".equalsIgnoreCase(dependentVO.getStatus())? "ATIVO" : "INATIVO");
+	}
+	
+}

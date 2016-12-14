@@ -1,0 +1,63 @@
+<wsdl:definitions name="TrackingV1" targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/tracking/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/tracking/v1" xmlns:cea="http://www.cea.com.br/EBO/CEA/v1">
+	
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/tracking/v1">
+			<xsd:include schemaLocation="TrackingEBS.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/commons/MetaInformacaoEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/BusinessFaultEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/TechnicalFaultEBO_v1.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="TrackingRequest_Message">
+		<wsdl:part name="parameters" element="tns:TrackingRequest"/>
+	</wsdl:message>
+	<wsdl:message name="TrackingResponse_Message">
+		<wsdl:part name="parameters" element="tns:TrackingResponse"/>
+	</wsdl:message>
+	<wsdl:message name="MetaInformacao_Message">
+   		<wsdl:part name="header" element="cea:MetaInformacao"/>
+  	</wsdl:message>
+	<wsdl:message name="TechnicalFaultMsg">
+		<wsdl:part name="TechnicalFault" element="cea:TechnicalFault"/>
+	</wsdl:message>
+	<wsdl:message name="BusinessFaultMsg">
+		<wsdl:part name="BusinessFault" element="cea:BusinessFault"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="Tracking_PortType">
+		<wsdl:operation name="Tracking">
+			<wsdl:input message="tns:TrackingRequest_Message"/>
+			<wsdl:output message="tns:TrackingResponse_Message"/>
+			<wsdl:fault name="TechnicalFault" message="tns:TechnicalFaultMsg"/>
+			<wsdl:fault name="BusinessFault" message="tns:BusinessFaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="Tracking_Binding" type="tns:Tracking_PortType">
+		<soap:binding transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
+		<wsdl:operation name="Tracking">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:MetaInformacao_Message" part="header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="TechnicalFault">
+				<soap:fault name="TechnicalFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="BusinessFault">
+				<soap:fault name="BusinessFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="Tracking_Service">
+		<wsdl:port name="Tracking_Service" binding="tns:Tracking_Binding">
+			<soap:address location="http://localhost:7001/Order/TrackingV1"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

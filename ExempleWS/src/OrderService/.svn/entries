@@ -1,0 +1,120 @@
+10
+
+dir
+160
+svn+ssh://10.16.1.107/svn/repositories/ecommerce/source/java/EcommerceService
+svn+ssh://10.16.1.107/svn/repositories/ecommerce
+
+
+
+2015-01-19T14:16:58.394073Z
+139
+br3bsb
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3f9d1e19-ae08-0510-b938-31a5c6f0c2dc
+
+.classpath
+file
+
+
+
+
+2015-02-26T16:53:48.944000Z
+d6daee95dc6eec140924e5aa07d433c5
+2014-12-09T13:10:15.259613Z
+53
+br3bsb
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+633
+
+.project
+file
+
+
+
+
+2015-02-26T16:53:48.971000Z
+9eb20be8370b3b327d32648e57678325
+2014-12-26T22:00:38.360093Z
+102
+br3bsb
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1045
+
+.settings
+dir
+
+WebContent
+dir
+
+build
+dir
+
+dist
+dir
+
+libs
+dir
+
+logs
+dir
+
+src
+dir
+
+ws-src
+dir
+

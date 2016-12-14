@@ -1,0 +1,31 @@
+<schema elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1">
+	
+	<include schemaLocation="../../../EBO/CeA/v1/ecommerce/CartaoPLEBO.xsd"/>
+	
+	<element name="CartaoPLRequest">
+		<complexType>
+			<sequence>
+				<element name="CartaoPL" type="tns:CartaoPL"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="CartaoPLLogRequest">
+		<complexType>
+			<sequence>
+				<element name="CartaoPL" type="tns:CartaoPL"/>
+			</sequence>
+		</complexType>
+	</element>	
+
+	<element name="CartaoPLResponse">
+		<complexType>
+			<sequence>
+				<element name="acknowledge" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>	
+</schema>

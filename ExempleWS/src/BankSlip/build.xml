@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="help" name="BankSlip">
+   
+	<property name="java.home" location="C:\Program Files\Java\jdk160_45\bin" />
+    <property name="app.name" value="BankSlip" />
+    <property name="classes.dir" location="bin" />
+    <property name="src.dir" location="src" />
+    <property name="app.dir" location="app" />
+   
+    <target name="help">
+        <echo message="********************************************************************" />
+        <echo message="**             UTILIZE UM OU MAIS TARGETS ABAIXO...               **" />
+        <echo message="********************************************************************" />
+        <echo message="" />
+        <echo message="** PREPRACAO DOS OBJETOS DO SISTEMA ********************************" />
+        <echo message="" />
+        <echo message="cleanAll......Exclui e cria os diretorios" />
+        <echo message="" />
+        <echo message="** GERACAO DE OBJETOS DO SISTEMA ***********************************" />
+        <echo message="" />
+        <echo message="jar........Gera o JAR do Sistema" />
+        <echo message="" />
+    </target>
+		
+    <target name="cleanAll">
+    	<delete dir="${classes.dir}" />
+        <delete dir="${app.dir}" />
+        <mkdir dir="${classes.dir}" />
+        <mkdir dir="${app.dir}" />
+    </target>
+	
+	<target name="wsimport-BankSlip">
+        <exec executable="${java.home}/../bin/wsimport">
+            <arg line="-extension -Xnocompile -XadditionalHeaders -keep -wsdllocation file:/C:/work/cea/workspace/java/EcommerceCore/wsdl/EBS/CeA/ecommerce/BankSlip.wsdl -s ./src
+                -d ./bin wsdl/EBS/CeA/ecommerce/BankSlip.wsdl -b wsdl/EBS/CeA/ecommerce/BankSlipEBS.xsd" />
+        </exec>
+    </target>
+	
+	<target depends="cleanAll" name="wsimport-BankSlip-Remote">
+        <exec executable="${java.home}/../bin/wsimport">
+            <arg line="-keep -s ./src
+              -d ./bin http://localhost:7001/PaymentService/service/bankSlip?wsdl" />
+        </exec>
+    </target>
+	
+	<target depends="cleanAll, wsimport-BankSlip" name="wsimport">
+		<echo message="Gerando as classes de servicos" />
+    </target>
+	
+    <target depends="cleanAll" name="compile" description="compile the source " >
+    	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+      </target>
+   
+    <target depends="compile" name="jar" description="Generates BankSlip.jar">
+        <delete file="${app.dir}/${app.name}.jar" />
+        <jar jarfile="${app.dir}/${app.name}.jar" compress="true" basedir="${classes.dir}">
+        	<manifest>
+        		<attribute name="Main-Class" value="br.com.cea.ecommerce.ExecutorManager"/>
+        	</manifest>
+        </jar>
+    </target>
+   
+</project>

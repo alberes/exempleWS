@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472941</millis>
+  <sequence>0</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>Arquivo(s) das lojas nao encontrado.</message>
+</record>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472961</millis>
+  <sequence>1</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.card.file.SplitSellByCardShop.split(Unknown Source)</message>
+</record>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472964</millis>
+  <sequence>2</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.SplitSellByCardShopManager.execute(Unknown Source)</message>
+</record>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472969</millis>
+  <sequence>3</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.SplitSellByCardShopManager.main(Unknown Source)</message>
+</record>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472979</millis>
+  <sequence>5</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.card.file.SplitSellByCardShop.split(Unknown Source)</message>
+</record>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472982</millis>
+  <sequence>6</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.SplitSellByCardShopManager.execute(Unknown Source)</message>
+</record>
+<record>
+  <date>2015-01-29T11:01:12</date>
+  <millis>1422536472986</millis>
+  <sequence>7</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.SplitSellByCardShopManager.main(Unknown Source)</message>
+</record>
+</log>

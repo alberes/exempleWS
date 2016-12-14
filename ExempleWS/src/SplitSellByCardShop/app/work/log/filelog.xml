@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-01-29T18:06:17</date>
+  <millis>1422561977970</millis>
+  <sequence>0</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Processado iniciado em 2015-01-29 18:06:17</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:17</date>
+  <millis>1422561977973</millis>
+  <sequence>1</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Encontrado(s) 2 arquivo(s).</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978015</millis>
+  <sequence>2</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Iniciando o processo do arquivo tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978022</millis>
+  <sequence>3</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Remover a transacao da loja 52814734</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978139</millis>
+  <sequence>4</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de linhas encontradas 17259 no arquivo tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978140</millis>
+  <sequence>5</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de linhas mantidas 17259 no arquivo tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978140</millis>
+  <sequence>6</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de linhas removidas 0 no arquivo 2015_01_29_18_06_17__tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978142</millis>
+  <sequence>7</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Separado os dados do arquivo tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978163</millis>
+  <sequence>8</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Arquivo tranferido de: C:\work\cea\workspace\java\SplitSellByCardShop\app\work\in\store\tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978164</millis>
+  <sequence>9</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Arquivo tranferido para: C:\work\cea\workspace\java\SplitSellByCardShop\app\work\copy\2015_01_29_18_06_17_tocav012600.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978207</millis>
+  <sequence>10</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Iniciando o processo do arquivo tocav012800.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978213</millis>
+  <sequence>11</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Remover a transacao da loja 52814734</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978294</millis>
+  <sequence>12</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de linhas encontradas 21780 no arquivo tocav012800.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978298</millis>
+  <sequence>13</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de linhas mantidas 21743 no arquivo tocav012800.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978303</millis>
+  <sequence>14</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de linhas removidas 37 no arquivo 2015_01_29_18_06_17__tocav012800.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978313</millis>
+  <sequence>15</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Separado os dados do arquivo tocav012800.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978346</millis>
+  <sequence>16</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Arquivo tranferido de: C:\work\cea\workspace\java\SplitSellByCardShop\app\work\in\store\tocav012800.ret</message>
+</record>
+<record>
+  <date>2015-01-29T18:06:18</date>
+  <millis>1422561978350</millis>
+  <sequence>17</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Arquivo tranferido para: C:\work\cea\workspace\java\SplitSellByCardShop\app\work\copy\2015_01_29_18_06_17_tocav012800.ret</message>
+</record>
+</log>

@@ -1,0 +1,36 @@
+<schema elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/affiliated/v1" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/affiliated/v1">
+	
+	<complexType name="Affiliated">
+		<sequence>
+			<element name="Matricula" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Identificador do associado]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="CPF" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[CPF ou CNPJ]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="Status">
+				<annotation>
+			      <documentation>Ativo - Associado esta ativo / Inativo - Associado esta desligado</documentation>
+			    </annotation>
+				<simpleType>
+				    <restriction base="string">
+				      <enumeration value="ATIVO"/>
+				      <enumeration value="INATIVO"/>
+				    </restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	
+</schema>

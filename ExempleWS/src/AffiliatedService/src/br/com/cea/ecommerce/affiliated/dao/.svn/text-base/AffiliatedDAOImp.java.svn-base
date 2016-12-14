@@ -1,0 +1,139 @@
+package br.com.cea.ecommerce.affiliated.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+import br.com.cea.commons.dao.AbstractJDBCDAO;
+import br.com.cea.commons.dao.jdbc.ConnectionFactory;
+import br.com.cea.commons.exception.DAOException;
+import br.com.cea.ecommerce.affiliated.vo.AffiliatedVO;
+import br.com.cea.ecommerce.affiliated.vo.DependentVO;
+import br.com.cea.ecommerce.common.dao.RHConnectionFactory;
+import br.com.cea.ecommerce.common.util.DateTimeUtil;
+
+public class AffiliatedDAOImp extends AbstractJDBCDAO implements AffiliatedDAO {
+
+	private Logger logger = LogManager.getLogger(getClass());
+	
+	private Connection conn;
+	
+	private static String QUERY_AFFILIATES_BY_DATES = "SELECT ni_pes, cd_emp, nu_chp, no_pes, cd_loc, nu_cpf, dt_ads, dt_dss, cd_sx, nr_mnq, nr_cal, cd_cnt_cst FROM RH102V_PESSOAL_ECOMMERCE"
+			+ " WHERE ((dt_ads BETWEEN ? AND ?) OR (dt_dss BETWEEN ? AND ?) OR (cd_cnt_cst IN('11931100', '11930040') AND dt_ads >= ?)) AND LTRIM(RTRIM(cd_emp)) = ?"
+			+ " ORDER BY dt_dss ASC, dt_ads ASC";
+	
+	private static String QUERY_AFFILIATES_DEPENDENT_BY_DATES = "SELECT cd_emp_ass, nu_chp_ass, dt_ads_ass, dt_dss, nome_dependente, cpf_dependente, dt_ultima_acao, situacao FROM rh107v_dependentes_ecommerce"
+			+ " WHERE ((dt_ads_ass BETWEEN ? AND ?) OR (dt_dss BETWEEN ? AND ?)) AND LTRIM(RTRIM(cd_emp_ass)) = ?"
+			+ " AND cpf_dependente IS NOT NULL AND LTRIM(RTRIM(cpf_dependente)) NOT IN('', '00000000000')";
+	
+	public AffiliatedDAOImp(ConnectionFactory myFactory) throws DAOException, SQLException {
+		super(RHConnectionFactory.getInstance());
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+	}
+	
+	@Override
+	public List<AffiliatedVO> getAffiliates(Date startDate, Date finishDate)
+			throws DAOException, SQLException {
+		List<AffiliatedVO> affiliates = new ArrayList<AffiliatedVO>();
+		AffiliatedVO affiliatedVO = null;
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		
+		try {
+			Date now = new Date();
+			ps = conn.prepareStatement(QUERY_AFFILIATES_BY_DATES);
+			ps.setTimestamp(1, DateTimeUtil.convertDateToSQLDate(startDate));
+			ps.setTimestamp(2, DateTimeUtil.convertDateToSQLDate(finishDate));
+			ps.setTimestamp(3, DateTimeUtil.convertDateToSQLDate(startDate));
+			ps.setTimestamp(4, DateTimeUtil.convertDateToSQLDate(now));
+			ps.setTimestamp(5, DateTimeUtil.convertDateToSQLDate(startDate));
+			ps.setString(6, "CEA");
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				affiliatedVO = new AffiliatedVO();
+				affiliatedVO.setNiPes(rs.getLong("ni_pes"));
+				affiliatedVO.setCdEmp(rs.getString("cd_emp"));
+				affiliatedVO.setNuChp(rs.getLong("nu_chp"));
+				affiliatedVO.setNoPes(rs.getString("no_pes"));
+				affiliatedVO.setCdLoc(rs.getString("cd_loc"));
+				affiliatedVO.setNuCpf(rs.getString("nu_cpf"));
+				affiliatedVO.setDtAds(rs.getDate("dt_ads"));
+				affiliatedVO.setDtDss(rs.getDate("dt_dss"));
+				affiliatedVO.setCdSx(rs.getString("cd_sx"));
+				affiliatedVO.setNrMnq(rs.getLong("nr_mnq"));
+				affiliatedVO.setNrCal(rs.getLong("nr_cal"));
+				affiliatedVO.setCdCntCst(rs.getString("cd_cnt_cst"));
+				affiliates.add(affiliatedVO);
+			}
+		} catch (Exception e) {
+			logger.error(e);
+			throw new DAOException(e);
+		} finally {
+			super.close(ps, rs);
+		}
+		return affiliates;
+	}
+	
+	@Override
+	public List<DependentVO> getDependents(Date startDate, Date finishDate) throws DAOException, SQLException {
+		List<DependentVO> dependents = new ArrayList<DependentVO>();
+		DependentVO dependentVO = null;
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		
+		try {
+			Date now = new Date();
+			ps = conn.prepareStatement(QUERY_AFFILIATES_DEPENDENT_BY_DATES);
+			ps.setTimestamp(1, DateTimeUtil.convertDateToSQLDate(startDate));
+			ps.setTimestamp(2, DateTimeUtil.convertDateToSQLDate(finishDate));
+			ps.setTimestamp(3, DateTimeUtil.convertDateToSQLDate(startDate));
+			ps.setTimestamp(4, DateTimeUtil.convertDateToSQLDate(now));
+			ps.setString(5, "CEA");
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				dependentVO = new DependentVO();
+				dependentVO.setCdEmp(rs.getString("cd_emp_ass"));
+				dependentVO.setNuChp(rs.getLong("nu_chp_ass"));
+				dependentVO.setDtAds(rs.getDate("dt_ads_ass"));
+				dependentVO.setDtDss(rs.getDate("dt_dss"));
+				dependentVO.setName(rs.getString("nome_dependente"));
+				dependentVO.setNuCpf(rs.getString("cpf_dependente"));
+				dependentVO.setDateLastAction(rs.getDate("dt_ultima_acao"));
+				dependentVO.setStatus(rs.getString("situacao"));
+				dependents.add(dependentVO);
+			}
+		} catch (Exception e) {
+			logger.error(e);
+			throw new DAOException(e);
+		} finally {
+			super.close(ps, rs);
+		}
+		return dependents;
+	}
+
+	@Override
+	public void rollback() throws SQLException{
+		conn.rollback();
+	}
+	
+	@Override
+	public void commit() throws SQLException{
+		conn.commit();
+	}
+	
+	@Override
+	public void close(){
+		super.close(conn);
+	}
+
+}

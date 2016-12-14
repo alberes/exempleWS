@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBO/CEA/ecommerce/order/v1" 
+	xmlns:tns="http://www.cea.com.br/EBO/CEA/ecommerce/order/v1" 
+	elementFormDefault="qualified">
+	
+	<complexType name="OrderList">
+		<sequence>
+			<element name="Order" type="tns:Order" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Order">
+		<sequence>
+			<element name="OrderId" type="string" />
+			<element name="Sequence" type="int" minOccurs="0" />
+			<element name="OrderGroup" type="string" minOccurs="0" />
+			<element name="Status" type="string" />
+			<element name="StatusDescription" type="string" minOccurs="0" />
+			<element name="Value" type="double" />
+			<element name="Customer" type="tns:Customer" />
+			<element name="Address" type="tns:Address" />
+			<element name="CreationDate" type="dateTime" minOccurs="0" />
+			<element name="LastChange" type="dateTime" minOccurs="0" />
+			<element name="Items" type="tns:ItemList" />
+			<element name="Transactions" type="tns:TransactionList" />
+			<element name="Totals" type="tns:ArrayOfTotals" />
+			
+			<element name="ChangesData" type="tns:ArrayOfChangesData" minOccurs="0" />
+
+			<element name="Origin" type="string" minOccurs="0" />
+			<element name="MarketPlace" type="tns:MarketPlace" minOccurs="0" />
+			<element name="CallCenter" type="tns:CallCenterOperatorData" minOccurs="0" />
+			<element name="MarketingData" type="tns:MarketingData" minOccurs="0" />
+			<element name="RatesAndBenefits" type="tns:ArrayOfRatesAndBenefits" minOccurs="0" />
+			<element name="FollowUpEmail" type="string" minOccurs="0" />
+			<element name="Hostname" type="string" minOccurs="0" />
+			<element name="LogisticsInfo" type="tns:ArrayOfLogisticsInfo" minOccurs="0" />
+			<element name="ChangesAttachment" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="Customer">
+		<sequence>
+			<element name="ProfileId" type="string" minOccurs="0" />
+			<element name="Email" type="string"/>
+			<element name="FirstName" type="string"/>
+			<element name="LastName" type="string"/>
+			<element name="DocumentType">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="CPF"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Document" type="string"/>
+			<element name="IsCorporate" type="boolean"/>
+			<element name="Phone" type="string" minOccurs="0" />
+			<element name="CorporateName" type="string" minOccurs="0" />
+			<element name="TradeName" type="string" minOccurs="0" />
+			<element name="CorporateDocument" type="string" minOccurs="0" />
+			<element name="StateInscription" type="string" minOccurs="0" />
+			<element name="CorporatePhone"	type="string" minOccurs="0" />
+			<element name="Self" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="Address">
+		<sequence>
+			<element name="Street" type="string" />
+			<element name="Number" type="string" />
+			<element name="Complement" type="string" minOccurs="0" />
+			<element name="Neighborhood" type="string" />
+			<element name="City" type="string" />
+			<element name="State" type="string" />
+			<element name="Country" type="string" />
+			<element name="FormattedAddress" type="string" minOccurs="0" />
+			<element name="PostalCode" type="string" minOccurs="0" />
+			<element name="Reference" type="string" minOccurs="0" />
+			<element name="ReceiverName" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="ItemList">
+		<sequence>
+			<element name="Item" type="tns:Item" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Item">
+		<sequence>
+			<element name="Sku" type="tns:Sku"/>
+			<element name="Quantity" type="int" />
+			<element name="SellingPrice" type="double" />
+			<element name="Tax" type="double" />
+			<element name="Shipping" type="double" />
+			<element name="Discounts" type="double" minOccurs="0" />
+			<element name="Currency" type="string" minOccurs="0" />
+			<element name="UnitOfMeasure" type="string" minOccurs="0" />
+			
+			<element name="Price" type="double" minOccurs="0" />
+			<element name="ListPrice" type="double" minOccurs="0" />
+			<element name="ImageUrl" type="string" minOccurs="0" />
+			<element name="DetailUrl" type="string" minOccurs="0" />
+			<element name="IsGift" type="boolean" minOccurs="0" />
+			<element name="Index" type="int" minOccurs="0" />
+			<element name="LockId" type="string" minOccurs="0" />
+
+			<element minOccurs="0" name="ItemPriceTag"  type="tns:ArrayOfItemPriceTag" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="Sku">
+		<sequence>
+			<element name="RefId" type="string" />
+			<element name="Name" type="string"/>
+			<element name="Ean" type="string" minOccurs="0" />
+			<element name="Id" type="string" minOccurs="0" />
+			<element name="Self" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="MarketPlace">
+		<sequence>
+			<element name="MarketplaceOrderId" type="string" minOccurs="0" />
+			<element name="MarketplaceServicesEndpoint" type="string" minOccurs="0" />
+			<element name="SellerOrderId" type="string" minOccurs="0" />
+			<element name="AffiliateId" type="string" minOccurs="0" />
+			<element name="SalesChannel" type="int" minOccurs="0" />
+			<element name="MerchantName" type="string" minOccurs="0" />	
+		</sequence>
+	</complexType>
+	
+	<complexType name="CallCenterOperatorData">
+		<sequence>
+			<element minOccurs="0" name="Email"  type="string" />
+			<element minOccurs="0" name="Id"  type="string" />
+			<element minOccurs="0" name="UserName"  type="string" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="TransactionList">
+		<sequence>
+			<element name="InvoiceTransaction" type="tns:Transaction" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Transaction">
+		<sequence>
+			<element name="Payments" type="tns:PaymentList" />
+			<element name="Id" type="string" minOccurs="0" />
+			<element name="IsActive" type="boolean" minOccurs="0" />
+			<element name="Self" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<complexType name="PaymentList">
+		<sequence>
+			<element name="InvoiceTransactionPayment" type="tns:Payment" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Payment">
+		<sequence>
+			<element name="Id" type="string" minOccurs="0" />
+			<element name="Self" type="string" minOccurs="0" />
+			<element name="PaymentSystem" type="string" minOccurs="0" />
+			<element name="PaymentSystemName" type="string" minOccurs="0" />
+			<element name="Value" type="double" minOccurs="0" />
+			<element name="Installments" type="int" minOccurs="0" />
+			<element name="ReferenceValue" type="double" minOccurs="0" />
+			<element name="FirstDigits" type="string" minOccurs="0" />
+			<element name="LastDigits" type="string" minOccurs="0" />
+			<element name="Url" type="string" minOccurs="0" />
+			<element name="GiftCardId" type="string" minOccurs="0" />
+			<element name="GiftCardName" type="string" minOccurs="0" />
+			<element name="GiftCardCaption" type="string" minOccurs="0" />
+			<element name="RedemptionCode" type="string" minOccurs="0" />
+			<element name="Group" type="string" minOccurs="0" />
+			<element name="BillingAddress" type="tns:Address" minOccurs="0" />
+			<element name="ConnectorResponses" type="tns:ConnectorResponses" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="ConnectorResponses">
+		<sequence>
+			<element name="Arp" type="string" minOccurs="0" />
+			<element name="AuthId" type="string" minOccurs="0" />
+			<element name="Message" type="string" minOccurs="0" />
+			<element name="Nsu" type="string" minOccurs="0" />
+			<element name="ReturnCode" type="string" minOccurs="0" />
+			<element name="Tid" type="string" minOccurs="0" />
+			<element name="NumAutent" type="string" minOccurs="0" />
+			<element name="NumCv" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="MarketingData">
+		<sequence>
+			<element minOccurs="0" name="Coupon"  type="string" />
+			<element minOccurs="0" name="Id"  type="string" />
+			<element minOccurs="0" name="UtmCampaign"  type="string" />
+			<element minOccurs="0" name="UtmMedium"  type="string" />
+			<element minOccurs="0" name="UtmPartner"  type="string" />
+			<element minOccurs="0" name="UtmSource"  type="string" />
+			<element minOccurs="0" name="UtmiCampaign"  type="string" />
+			<element minOccurs="0" name="UtmiPage"  type="string" />
+			<element minOccurs="0" name="UtmiPart"  type="string" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="ArrayOfRatesAndBenefits">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="RatesAndBenefits"  type="tns:RatesAndBenefits" />
+		</sequence>
+	</complexType>
+
+	<complexType name="RatesAndBenefits">
+		<sequence>
+			<element minOccurs="0" name="Description"  type="string" />
+			<element minOccurs="0" name="Featured" type="boolean" />
+			<element minOccurs="0" name="Id"  type="string" />
+			<element minOccurs="0" name="Name"  type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfLogisticsInfo">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="LogisticsInfo"  type="tns:LogisticsInfo" />
+		</sequence>
+	</complexType>
+
+	<complexType name="LogisticsInfo">
+		<sequence>
+			<element minOccurs="0" name="DeliveryCompany"  type="string" />
+			<element minOccurs="0" name="DeliveryWindowStartDateUtc"  type="dateTime" />
+			<element minOccurs="0" name="DeliveryWindowEndDateUtc"  type="dateTime" />
+			<element minOccurs="0" name="DeliveryWindowPrice" type="double" />
+			<element minOccurs="0" name="ItemIndex" type="int" />
+			<element minOccurs="0" name="LockTTL"  type="string" />
+			<element minOccurs="0" name="LogisticsDeliveryId"  type="tns:ArrayOfLogisticsDeliveryId" />
+			<element minOccurs="0" name="LogisticsInfoSla"  type="tns:ArrayOfLogisticsInfoSla" />
+			<element minOccurs="0" name="Price" type="double" />
+			<element minOccurs="0" name="SelectedSla"  type="string" />
+			<element minOccurs="0" name="SellingPrice" type="double" />
+			<element minOccurs="0" name="ShippingEstimate"  type="string" />
+			<element minOccurs="0" name="ShippingEstimateDate"  type="dateTime" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfLogisticsDeliveryId">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="LogisticsDeliveryId"  type="tns:LogisticsDeliveryId" />
+		</sequence>
+	</complexType>
+
+	<complexType name="LogisticsDeliveryId">
+		<sequence>
+			<element minOccurs="0" name="CourierId"  type="string" />
+			<element minOccurs="0" name="CourierName"  type="string" />
+			<element minOccurs="0" name="DockId"  type="string" />
+			<element minOccurs="0" name="Quantity" type="int" />
+			<element minOccurs="0" name="WarehouseId"  type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfLogisticsInfoSla">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="LogisticsInfoSla"  type="tns:LogisticsInfoSla" />
+		</sequence>
+	</complexType>
+
+	<complexType name="LogisticsInfoSla">
+		<sequence>
+			<element minOccurs="0" name="DeliveryWindowStartDateUtc"  type="dateTime" />
+			<element minOccurs="0" name="DeliveryWindowEndDateUtc"  type="dateTime" />
+			<element minOccurs="0" name="DeliveryWindowPrice" type="double" />
+			<element minOccurs="0" name="Id"  type="string" />
+			<element minOccurs="0" name="Name"  type="string" />
+			<element minOccurs="0" name="Price" type="double" />
+			<element minOccurs="0" name="ShippingEstimate"  type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfChangesData">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="ChangesData"	 type="tns:ChangesData" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ChangesData">
+		<sequence>
+			<element minOccurs="0" name="DiscountValue" type="double" />
+			<element minOccurs="0" name="ChangesDataItem"  type="tns:ArrayOfChangesDataItem" />
+			<element minOccurs="0" name="Reason"  type="string" />
+			<element minOccurs="0" name="Receipt"  type="string" />
+			<element minOccurs="0" name="ReceiptDate"  type="dateTime" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfChangesDataItem">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="ChangesDataItem"  type="tns:ChangesDataItem" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ChangesDataItem">
+		<sequence>
+			<element minOccurs="0" name="Id" type="int" />
+			<element minOccurs="0" name="Name"  type="string" />
+			<element minOccurs="0" name="Price" type="double" />
+			<element minOccurs="0" name="Quantity" type="int" />
+			<element minOccurs="0" name="Type"  type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfItemPriceTag">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="ItemPriceTag"  type="tns:ItemPriceTag" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ItemPriceTag">
+		<sequence>
+			<element minOccurs="0" name="Identifier"  type="string" />
+			<element minOccurs="0" name="IsPercentual" type="boolean" />
+			<element minOccurs="0" name="Name"  type="string" />
+			<element minOccurs="0" name="Value" type="double" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ArrayOfTotals">
+		<sequence>
+			<element minOccurs="0" maxOccurs="unbounded" name="Totals"  type="tns:Totals" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Totals">
+		<sequence>
+			<element minOccurs="0" name="Id"  type="string" />
+			<element minOccurs="0" name="Name"  type="string" />
+			<element minOccurs="0" name="Value" type="int" />
+		</sequence>
+	</complexType>
+	
+</schema>

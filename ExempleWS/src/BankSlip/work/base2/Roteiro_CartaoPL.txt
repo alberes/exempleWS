@@ -1,0 +1,47 @@
+1 - Webservices do cartão PL
+
+http://[URL]/EcommerceService/service/cartaoPL?wsdl
+
+1.1 - CartaoPL (informacoes do pagamento)
+1.2 - CartaoPLLog (Guarda o payload)
+
+2 - Chamar o serviço java standalone e passar como parâmetro o diretório do arquivo config.properties
+Ex.: java -jar MergeFilePLCard.jar C:/Enviroment/workspacePLCard/MergeFilePLCard/work
+
+Conforme o argumento passado na chamado do serviço o sistema irá procurar o arquivo de properties no subdiretório config conforme o exemplo abaixo:
+C:\Enviroment\workspacePLCard\MergeFilePLCard\work\config\config.properties
+
+2.2 - Sistema verificar na base os pagamentos com status = 1 que indica que a confirmação do pagamento está ok (1.3 - ConfirmCartaoPL).
+Gera o arquivo ecommerce no diretório:
+
+file.base.dir + file.ecommerce.dir + file.ecommerce.name + extension.file.name.ecommerce
+Ex.: C:/Enviroment/workspacePLCard/MergeFilePLCard/work/in/ecommerce/ecommerce_pl.p50
+
+Caso não exista registro(s) será gerado um arquivo vazio
+
+2.3 - Sistema ler o arquivo das lojas. Deve existir apenas um arquivo, qualquer nome e a extensão conforme configurado no arquivo de propriedade.
+
+file.base.dir + file.store.dir + [ARQUIVO_ENCONTRADO_NO_DIRETORIO] + extension.file.name.store
+Ex.: C:/Enviroment/workspacePLCard/MergeFilePLCard/work/in/store/atb30101 + extension.file.name.store
+
+2.4 - Sistema faz merge dos arquivos dos passos 1.2 e 1.3 e copia para o diretorio de saída
+
+file.base.dir + file.out.dir
+C:/Enviroment/workspacePLCard/MergeFilePLCard/work/out
+
+2.5 - Os arquivos dos passos 1.2 e 1.3 são transferidos para o diretório
+file.base.dir + file.copy.dir
+C:/Enviroment/workspacePLCard/MergeFilePLCard/work/copy
+e removidos da origem
+
+2.6 - Sistema gera o log do processo em:
+file.base.dir + file.log.dir + log.name
+C:/Enviroment/workspacePLCard/MergeFilePLCard/work/log/filelog.xml
+
+2.7 - Sistema gera exceção por vários motivos:
+file.base.dir + file.log.dir + file.log.exception.dir + log.exception.name
+C:/Enviroment/workspacePLCard/MergeFilePLCard/work/log/error/filelogException.xml
+
+2.7.1 - O Arquivo do passo 1.2 não existe
+2.7.2 - O arquiv do passo 1.3 não existe
+2.7.3 - Erro ao tentar acessar a base de dados para gerar o arquivo do passo 1.2

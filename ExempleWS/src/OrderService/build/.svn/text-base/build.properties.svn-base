@@ -1,0 +1,51 @@
+#usado pelo JENKIS
+project.version=1.0.0
+
+#Diretorio onde esta localizado a JDK, usado na geração de arquivos a partir do WSDL
+java-home-lib=C:/work/programs/Java/jdk1.6.0_35/lib
+
+#Nome do projeto, a partir desse é gerado o nome do WAR
+project.name=OrderService
+
+#Nome do arquivo de properties onde é guardado o id da versão
+version.file=aplicacao_version.properties
+
+#Diretorio dos fontes
+src.dir=../src
+
+#Diretorio onde é gravado o WAR
+dist.dir=../dist
+
+
+## Diretorio de saida dos fontes gerados pelo wsimport ##
+ws-src.dir=../ws-src
+
+#Cobertura Excludes - Excluir do teste de cobertura
+packageToExcludes=br/com/cea/referencia/ws/**/*.class,test/**/*.class
+
+### Diretorio onde estão os arquivos do WSDLs ###
+wsdl.dir=C:/work/cea/workspace/java/OrderService/WebContent/WEB-INF/wsdl
+
+### Definições dos WSDLs 
+#url: 'false' ou 'true', indica se a variavel file é uma url ou uma referencia para um arquivo local
+#file: url do wsdl ou parte do diretorio onde esta o wsdl. A primeira parte é definida em 'wsdl.dir'
+#package:Nome o package onde será gerado os fontes. Cada wsdl tem que ter um package distinto 
+###
+
+wsdl[0].url=false
+wsdl[0].file=/EBS/CeA/ecommerce/InvoiceToSynchroV1.wsdl
+
+wsdl[1].url=false
+wsdl[1].file=/EBS/CeA/ecommerce/InvoiceV1.wsdl
+
+wsdl[2].url=false
+wsdl[2].file=/EBS/CeA/ecommerce/OrderV1.wsdl
+
+wsdl[3].url=false
+wsdl[3].file=/EBS/CeA/ecommerce/OrderWevo1.wsdl
+
+wsdl[4].url=false
+wsdl[4].file=/EBS/CeA/ecommerce/InvoiceToWevoV1.wsdl
+
+wsdl[5].url=false
+wsdl[5].file=/Wevo/WmiService.svc.wsdl

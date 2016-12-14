@@ -1,0 +1,11 @@
+file.base.dir=C:/work/cea/workspace/java/BankSlip/work/bankslip
+file.ecommerce.dir=in/ecommerce
+extension.file.name.ecommerce=ret
+file.out.dir=out
+file.separator=/
+file.log.dir=log
+log.name=filelog.xml
+file.copy.dir=copy
+file.log.exception.dir=error
+log.exception.name=filelogException.xml
+url.service=http://localhost:6001/BankSlip/proxy/BankSlipService?wsdl

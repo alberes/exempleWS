@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints
+    xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime'
+    version="2.0">
+		
+	<endpoint name='cartaoPL'
+		interface='br.com.cea.ebs.cea.ecommerce.cartaopl.v1.CartaoPLPortType'
+		implementation='br.com.cea.ecommerce.pl.ws.CartaoPLPortTypeImp'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/CartaoPL.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1}CartaoPL_Service'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1}CartaoPL_Service'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/cartaoPL' />
+		
+	<endpoint name='bankSlip'
+		interface='br.com.cea.ebs.cea.ecommerce.bankslip.v1.BankSlipPortType'
+		implementation='br.com.cea.ecommerce.bankslip.ws.BankSlipPortTypeImp'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/BankSlip.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/bankslip/v1}BankSlip_Service'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/bankslip/v1}BankSlip_Service'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/bankSlip' />
+
+</endpoints>

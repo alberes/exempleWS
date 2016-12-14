@@ -1,0 +1,90 @@
+<wsdl:definitions name="CartaoPL" targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:cea="http://www.cea.com.br/EBO/CEA/v1">
+	
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1">
+			<xsd:include schemaLocation="CartaoPLEBS.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/commons/MetaInformacaoEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/BusinessFaultEBO_v1.xsd"/>
+			<xsd:import namespace="http://www.cea.com.br/EBO/CEA/v1" schemaLocation="../../../EBO/CeA/v1/fault/TechnicalFaultEBO_v1.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="CartaoPLRequest_Message">
+		<wsdl:part name="parameters" element="tns:CartaoPLRequest"/>
+	</wsdl:message> 
+	<wsdl:message name="CartaoPLResponse_Message">
+		<wsdl:part name="parameters" element="tns:CartaoPLResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="CartaoPLLogRequest_Message">
+		<wsdl:part name="parameters" element="tns:CartaoPLLogRequest"/>
+	</wsdl:message> 
+	
+	<wsdl:message name="MetaInformacao_Message">
+   		<wsdl:part name="header" element="cea:MetaInformacao"/>
+  	</wsdl:message>
+	<wsdl:message name="TechnicalFaultMsg">
+		<wsdl:part name="TechnicalFault" element="cea:TechnicalFault"/>
+	</wsdl:message>
+	<wsdl:message name="BusinessFaultMsg">
+		<wsdl:part name="BusinessFault" element="cea:BusinessFault"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="CartaoPL_PortType">
+		<wsdl:operation name="CartaoPL">
+			<wsdl:input message="tns:CartaoPLRequest_Message"/>
+			<wsdl:output message="tns:CartaoPLResponse_Message"/>
+			<wsdl:fault name="TechnicalFault" message="tns:TechnicalFaultMsg"/>
+			<wsdl:fault name="BusinessFault" message="tns:BusinessFaultMsg"/>
+		</wsdl:operation>
+		<wsdl:operation name="CartaoPLLog">
+			<wsdl:input message="tns:CartaoPLLogRequest_Message"/>
+			<wsdl:output message="tns:CartaoPLResponse_Message"/>
+			<wsdl:fault name="TechnicalFault" message="tns:TechnicalFaultMsg"/>
+			<wsdl:fault name="BusinessFault" message="tns:BusinessFaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="CartaoPL_Binding" type="tns:CartaoPL_PortType">
+		<soap:binding transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
+		<wsdl:operation name="CartaoPL">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:MetaInformacao_Message" part="header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="TechnicalFault">
+				<soap:fault name="TechnicalFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="BusinessFault">
+				<soap:fault name="BusinessFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="CartaoPLLog">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:MetaInformacao_Message" part="header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="TechnicalFault">
+				<soap:fault name="TechnicalFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="BusinessFault">
+				<soap:fault name="BusinessFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="CartaoPL_Service">
+		<wsdl:port name="CartaoPL_Service" binding="tns:CartaoPL_Binding">
+			<soap:address location="http://localhost:7001/CartaoPL/proxy/CartaoPLService"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

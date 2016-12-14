@@ -1,0 +1,67 @@
+<schema elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/bankslip/v1" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/bankslip/v1">
+	
+	<complexType name="BankSlip">
+		<sequence>
+			<element name="DateOccurrence" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[DATA DE OCORRÊNCIA NO BANCO]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="OrderId" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Numero do pedido]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="DueDate" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[DATA DE VENCIMENTO DO TÍTULO]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="ValueBankSlip" type="decimal">
+				<annotation>
+					<documentation>
+						<![CDATA[VALOR NOMINAL DO TÍTULO]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="ValuePayment" type="decimal">
+				<annotation>
+					<documentation>
+						<![CDATA[VALOR LANÇADO EM CONTA CORRENTE]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="DepositDate" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[DATA DE CRÉDITO DESTA LIQUIDAÇÃO]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="Payer" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[NOME DO PAGADOR]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="LineDetail" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Informacoes completa do registro enviado pelo banco]]>
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	
+</schema>

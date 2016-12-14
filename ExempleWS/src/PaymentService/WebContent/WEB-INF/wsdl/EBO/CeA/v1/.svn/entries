@@ -1,0 +1,37 @@
+10
+
+dir
+160
+svn+ssh://10.16.1.107/svn/repositories/ecommerce/source/java/PaymentService/WebContent/WEB-INF/wsdl/EBO/CeA/v1
+svn+ssh://10.16.1.107/svn/repositories/ecommerce
+
+
+
+2014-12-29T11:25:33.871307Z
+105
+br3jaa
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3f9d1e19-ae08-0510-b938-31a5c6f0c2dc
+
+commons
+dir
+
+ecommerce
+dir
+
+fault
+dir
+

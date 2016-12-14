@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-01-29T18:05:44</date>
+  <millis>1422561944898</millis>
+  <sequence>4</sequence>
+  <logger>br.com.cea.ecommerce.card.file.SplitSellByCardShop</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.card.file.SplitSellByCardShop</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>Arquivo(s) das lojas nao encontrado.</message>
+</record>
+</log>

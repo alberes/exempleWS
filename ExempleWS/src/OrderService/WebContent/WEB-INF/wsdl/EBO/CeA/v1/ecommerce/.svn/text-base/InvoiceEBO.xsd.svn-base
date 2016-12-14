@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBO/CEA/ecommerce/invoice/v1" 
+	xmlns:tns="http://www.cea.com.br/EBO/CEA/ecommerce/invoice/v1" 
+	elementFormDefault="qualified">
+	
+	<complexType name="InvoiceList">
+		<sequence>
+			<element name="InvoiceList" type="tns:Invoice" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Invoice">
+		<sequence>
+			<element name="Id" type="string" />
+			<element name="Order" type="tns:Order"/>
+			<element name="Items" type="tns:ItemList" />
+			<element name="Totals" type="tns:Totals" />
+			<element name="Customer" type="tns:Customer"/>
+			<element name="ShippingAddress" type="tns:Address"/>
+			<element name="Transactions" type="tns:TransactionList" />
+			<element name="FiscalDocument" type="tns:FiscalDocument" minOccurs="0"/>
+			<element name="InvoiceSelf" type="string" minOccurs="0"/>
+			<element name="Type" type="string" minOccurs="0"/>
+			<element name="CreatedAt" type="date" minOccurs="0"/>
+			<element name="UpdatedAt" type="date" minOccurs="0"/>
+			<element name="IssuanceDate" type="date" minOccurs="0"/>
+			<element name="SalesChannel" type="tns:SalesChannel" minOccurs="0"/>
+			<element name="Courier" type="tns:Courier" minOccurs="0"/>
+			<element name="Checkout" type="int" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Order">
+		<sequence>
+			<element name="Id" type="string" />
+			<element name="Sequence" type="int" />
+			<element name="Self" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ItemList">
+		<sequence>
+			<element name="Item" type="tns:Item" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Item">
+		<sequence>
+			<element name="Sku" type="tns:Sku"/>
+			<element name="Quantity" type="int" />
+			<element name="SellingPrice" type="double" />
+			<element name="Tax" type="double" />
+			<element name="Shipping" type="double" />
+			<element name="Discounts" type="double" minOccurs="0"/>
+			<element name="Currency" type="string" minOccurs="0"/>
+			<element name="UnitOfMeasure" type="string" minOccurs="0"/>
+			<element name="GrossWeight" type="double" minOccurs="0"/>
+			<element name="NetWeight" type="double" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Sku">
+		<sequence>
+			<element name="RefId" type="string" />
+			<element name="Name" type="string"/>
+			<element name="Ean" type="string" minOccurs="0"/>
+			<element name="serial" type="string"/>
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Self" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Totals">
+		<sequence>
+			<element minOccurs="0" name="Value" type="double" />
+			<element minOccurs="0" name="Discounts" type="double" />
+			<element minOccurs="0" name="Shipping" type="double" />
+			<element minOccurs="0" name="Tax" type="double" />
+		</sequence>
+	</complexType>
+
+	<complexType name="SalesChannel">
+		<sequence>
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Name" type="string" minOccurs="0"/>
+			<element name="Self" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Customer">
+		<sequence>
+			<element name="Email" type="string"/>
+			<element name="FirstName" type="string"/>
+			<element name="LastName" type="string"/>
+			<element name="DocumentType">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="CPF"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Document" type="string"/>
+			<element name="IsCorporate" type="boolean"/>
+			<element name="Phone" type="string" minOccurs="0"/>
+			<element name="CorporateName" type="string" minOccurs="0"/>
+			<element name="TradeName" type="string" minOccurs="0"/>
+			<element name="CorporateDocument" type="string" minOccurs="0"/>
+			<element name="StateInscription" type="string" minOccurs="0"/>
+			<element name="CorporatePhone"	type="string" minOccurs="0"/>
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Self" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Courier">
+		<sequence>
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Name" type="string" minOccurs="0"/>
+			<element name="StateInscription" type="string" minOccurs="0"/>
+			<element name="Plaque" type="string" minOccurs="0"/>
+			<element name="CourierAddress" type="tns:Address" minOccurs="0"/>
+			<element name="CargoType" type="string"/>
+			<element name="GrossWeight" type="double"/>
+			<element name="NetWeight" type="double"/>
+			<element name="VolumeNumber" type="int"/>
+			<element name="Self" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Address">
+		<sequence>
+			<element name="Street" type="string" />
+			<element name="Number" type="string" />
+			<element name="Complement" type="string" minOccurs="0"/>
+			<element name="Neighborhood" type="string" />
+			<element name="City" type="string" />
+			<element name="State" type="string" />
+			<element name="Country" type="string" />
+			<element name="FormattedAddress" type="string" minOccurs="0"/>
+			<element name="PostalCode" type="string" minOccurs="0"/>
+			<element name="Reference" type="string" minOccurs="0"/>
+			<element name="ReceiverName" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TransactionList">
+		<sequence>
+			<element name="InvoiceTransaction" type="tns:Transaction" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Transaction">
+		<sequence>
+			<element name="Payments" type="tns:PaymentList" />
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Self" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="PaymentList">
+		<sequence>
+			<element name="InvoiceTransactionPayment" type="tns:Payment" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Payment">
+		<sequence>
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Self" type="string" minOccurs="0"/>
+			<element name="PaymentSystem" type="string" minOccurs="0"/>
+			<element name="PaymentSystemName" type="string" minOccurs="0"/>
+			<element name="Value" type="double" minOccurs="0"/>
+			<element name="Installments" type="int" minOccurs="0"/>
+			<element name="ReferenceValue" type="double" minOccurs="0"/>
+			<element name="FirstDigits" type="string" minOccurs="0"/>
+			<element name="LastDigits" type="string" minOccurs="0"/>
+			<element name="Url" type="string" minOccurs="0"/>
+			<element name="GiftCardId" type="string" minOccurs="0"/>
+			<element name="GiftCardName" type="string" minOccurs="0"/>
+			<element name="GiftCardCaption" type="string" minOccurs="0"/>
+			<element name="RedemptionCode" type="string" minOccurs="0"/>
+			<element name="Group" type="string" minOccurs="0"/>
+			<element name="BillingAddress" type="tns:Address" minOccurs="0"/>
+			<element name="ConnectorResponses" type="tns:ConnectorResponses" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ConnectorResponses">
+		<sequence>
+			<element name="Arp" type="string" minOccurs="0"/>
+			<element name="AuthId" type="string" minOccurs="0"/>
+			<element name="Message" type="string" minOccurs="0"/>
+			<element name="Nsu" type="string" minOccurs="0"/>
+			<element name="ReturnCode" type="string" minOccurs="0"/>
+			<element name="Tid" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="FiscalDocument">
+		<sequence>
+			<element name="Id" type="string" minOccurs="0"/>
+			<element name="Value" type="int" minOccurs="0"/>
+			<element name="Url" type="string" minOccurs="0"/>
+			<element name="AcessKey" type="string" minOccurs="0"/>
+			<element name="EmbeddedDocument" type="string" minOccurs="0"/>
+			<element name="Attachment" type="tns:Attachment" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="Attachment">
+		<sequence>
+			<element name="Content" type="string" minOccurs="0"/>
+			<element name="ContentType" type="string" minOccurs="0"/>
+			<element name="FileName" type="string" minOccurs="0"/>
+			<element name="Url" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+</schema>

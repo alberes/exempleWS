@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="pack" name="projeto">
+	<property file="build.properties" />
+
+	<tstamp>
+		<format property="TODAY" pattern="dd/MM/yyyy HH:mm" locale="pt,BR" />
+	</tstamp>
+
+	<property name="verbose" value="true" />
+	<property name="WEB_CONTENT" value="../WebContent" />
+	<property name="BUILD_DIR" value="build" />
+	<property name="BUILD_DIR_INSTRUMENT_COBERTURA" value="buildcobertura" />
+		
+		
+	<import file="others.xml" />	
+	<path id="cobertura.classpath">
+		<fileset dir="${WEB_CONTENT}/WEB-INF/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<path id="base.path">
+		<fileset dir="${WEB_CONTENT}/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="../libs">
+			<include name="**/*.jar" />
+		</fileset>		
+	</path>		
+	
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>	
+
+
+	<target name="wsimport" >
+		<echo>Gerando o WS:${wsdl} ${url}</echo>
+		<if>
+			<equals arg1="${url}" arg2="true" />
+			<then>
+				<wsimport debug="true" verbose="${verbose}" keep="true" extension="true" destdir="${ws-src.dir}" wsdl="${wsdl}" xadditionalHeaders="true"/>
+			</then>
+			<else>
+				<wsimport debug="true" verbose="${verbose}" keep="true" extension="true" destdir="${ws-src.dir}" wsdl="${wsdl.dir}/${wsdl}" xadditionalHeaders="true"/>
+			</else>
+		</if>
+	</target>
+	 
+
+	<target name="gen-server-sources" description="Sobreescreve os fontes do webservice a partir dos WSDLs definidos no arquivo de properties">
+		<echo>Iniciando o processo de geracao de fontes</echo>
+		<echo>Executando o XJC...</echo>
+		<delete verbose="true">
+			<fileset dir="${ws-src.dir}">
+				<include name="**" />
+			</fileset>
+		</delete>	
+		
+		<script language="javascript">
+			<![CDATA[
+			     var i=0;
+			  	 while(true){
+				     var wsdl  = project.getProperty("wsdl["+i+"].file");
+					 var url  = project.getProperty("wsdl["+i+"].url");
+			
+					 if(wsdl==null){
+						break;
+				     }else{
+					    java.lang.System.out.println("Iniciando o processo do wsdl["+wsdl+"]");
+						antcall=project.createTask("antcall");
+						antcall.init();
+						antcall.setTarget("wsimport");
+						antcallParam1=antcall.createParam();
+						antcallParam1.setName("wsdl");
+						antcallParam1.setValue(wsdl);
+						antcallParam2=antcall.createParam();
+						antcallParam2.setName("url");
+						antcallParam2.setValue(url);
+						antcall.execute();		
+		 			 }
+					 i++;
+				}
+	         ]]>
+		</script>
+	</target>
+
+
+    <target name="compile" description="Compila as classes">
+		<echo>Excluindo as classes compiladas e o WAR anterior</echo>
+		<delete dir="${BUILD_DIR}" />
+		<delete dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />
+			
+		<delete file="../dist/${project.name}.war" verbose="true" />
+			
+		<echo>Compilando as classes</echo>
+		<mkdir dir="${BUILD_DIR}" />
+		<javac destdir="${BUILD_DIR}" debug="true" debuglevel="lines,vars,source" optimize="yes" failonerror="no"  encoding="8859_1">
+		    <src path="${src.dir}"/>
+		    <src path="${ws-src.dir}"/>
+			<classpath refid="base.path" />
+		</javac>
+    	<split value="${project.version}" sep="\." prefix="version" />
+    	<propertyfile file="${src.dir}/${version.file}">
+			<entry key="version.build" type="int" default="0" operation="+" />
+    		<entry key="version.version" type="int"  value="${version[0]}"/>
+    		<entry key="version.release" type="int"  value="${version[1]}"/>
+   			<entry key="version.correcao" type="int"  value="${version[2]}"/>
+		</propertyfile>
+		<property file="${src.dir}/${version.file}" />    	
+    </target>
+
+	
+	<target name="buildlocal-for-test-cobertura" depends="compile" description="Substitui os arquivos locais do WEB-INF/classes com os modeificados para analise de cobertura">
+		<echo>Empacotando a aplicacao para teste de cobertura</echo>
+		
+		<delete file="${WEB_CONTENT}/WEB-INF/cobertura.ser"/>
+
+		<cobertura-instrument todir="${BUILD_DIR_INSTRUMENT_COBERTURA}" datafile="${WEB_CONTENT}/WEB-INF/cobertura.ser" >
+			<ignore regex="org.apache.log4j.*" />
+			<fileset dir="${BUILD_DIR}"  excludes="${packageToExcludes}" includes="**/*.class" />
+		</cobertura-instrument>
+		<copyfile dest="${WEB_CONTENT}/WEB-INF/cobertura.ser.bkp" src="${WEB_CONTENT}/WEB-INF/cobertura.ser"/>
+		<copy todir="${WEB_CONTENT}/WEB-INF/classes" overwrite="true">
+			<fileset dir="${BUILD_DIR_INSTRUMENT_COBERTURA}">
+			</fileset>	
+		</copy>
+		<delete dir="${BUILD_DIR}" />
+		<delete dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />
+		
+	</target>		
+		
+	<target name="pack-for-test-cobertura" depends="compile" description="Empacota a aplicação em um war preparando-a pra um teste de cobertura">
+		<echo>Empacotando a aplicacao para teste de cobertura</echo>
+		
+		<delete file="${WEB_CONTENT}/WEB-INF/cobertura.ser"/>
+		<delete dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />
+		<mkdir dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />
+		<cobertura-instrument todir="${BUILD_DIR_INSTRUMENT_COBERTURA}" datafile="${WEB_CONTENT}/WEB-INF/cobertura.ser" >
+			<ignore regex="org.apache.log4j.*" />
+			<fileset dir="${BUILD_DIR}"  excludes="${packageToExcludes}" includes="**/*.class" />
+		</cobertura-instrument>
+		<copyfile dest="${WEB_CONTENT}/WEB-INF/cobertura.ser.bkp" src="${WEB_CONTENT}/WEB-INF/cobertura.ser"/>		
+		
+		<war destfile="../dist/${project.name}.war" webxml="${WEB_CONTENT}/WEB-INF/web.xml">
+			<fileset dir="${WEB_CONTENT}">
+				<exclude name="**/${version.file}" />
+				<exclude name="WEB-INF/classes" />
+			</fileset>			
+			
+			<zipfileset file="${src.dir}/${version.file}" prefix="WEB-INF/classes" />
+			
+			<zipfileset  prefix="WEB-INF/src" dir="${src.dir}" />
+			<zipfileset  prefix="WEB-INF/src" dir="${ws-src.dir}" />
+
+			<classes dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />
+			
+			<metainf dir="${src.dir}/META-INF" />
+			<manifest>
+				<section name="APP INFO">
+					<attribute name="Built-By" value="${user.name}" />
+					<attribute name="Implementation-Title" value="${project.name}" />
+					<attribute name="Implementation-Version" value="V.${version.version}.${version.release}.${version.correcao}.${version.build} (${TODAY})" />
+				</section>
+			</manifest>		
+		</war>		
+		<delete dir="${BUILD_DIR}" />
+		<delete dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />
+	</target>		
+		
+	<target name="build.timestamp">
+		<echo file="../WebContent/appVersion.txt">
+			Pacote gerado em ${TODAY}
+			Built-By ${user.name}
+			Implementation-Title ${project.name}
+		</echo>
+	</target>
+	
+	<target name="pack" depends="compile, build.timestamp"  description="Empacota a aplicação em um war preparando-a pra produção">
+		
+		<war destfile="../dist/${project.name}.war" webxml="${WEB_CONTENT}/WEB-INF/web.xml">
+			<fileset dir="${WEB_CONTENT}">
+				<exclude name="**/${version.file}" />
+				<exclude name="WEB-INF/classes" />
+			</fileset>
+			<zipfileset file="${src.dir}/${version.file}" prefix="WEB-INF/classes" />
+			
+			<classes dir="${BUILD_DIR}" />
+			<metainf dir="${src.dir}/META-INF" />
+			<manifest>
+				<section name="APP INFO">
+					<attribute name="Built-By" value="${user.name}" />
+					<attribute name="Implementation-Title" value="${project.name}" />
+					<attribute name="Implementation-Version" value="V.${version.version}.${version.release}.${version.correcao}.${version.build} (${TODAY})" />
+				</section>
+			</manifest>
+		</war>
+		<delete dir="${BUILD_DIR}" />
+		<delete dir="${BUILD_DIR_INSTRUMENT_COBERTURA}" />		
+
+	</target>
+
+
+</project>

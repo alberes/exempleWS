@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729169</millis>
+  <sequence>0</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Processo de merge iniciado dos arquivos ecommerce_pl</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729626</millis>
+  <sequence>1</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de registros encontrados na base: 0. Quantidade de linhar geradas no arquivos: 0</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729626</millis>
+  <sequence>2</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Foram gravados 0 no arquivo ecommerce_pl</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729631</millis>
+  <sequence>3</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Foram atualizados 0 na base </message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729636</millis>
+  <sequence>4</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>Arquivo da loja nao encontrado.</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729636</millis>
+  <sequence>5</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.base2.file.MergeFilePL.merge(MergeFilePL.java:42)</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729636</millis>
+  <sequence>6</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.command.Base2Command.execute(Base2Command.java:31)</message>
+</record>
+<record>
+  <date>2014-12-17T19:12:09</date>
+  <millis>1418850729637</millis>
+  <sequence>7</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>severe</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.ExecutorManager.main(ExecutorManager.java:22)</message>
+</record>
+</log>

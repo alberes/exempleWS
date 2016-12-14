@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints
+    xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime'
+    version="2.0">
+		
+	<endpoint name='affiliated'
+		interface='br.com.cea.ebs.cea.ecommerce.affiliated.v1.AffiliatedPortType'
+		implementation='br.com.cea.ecommerce.affiliated.ws.AffiliatedPortTypeImp'
+		wsdl='WEB-INF/wsdl/EBS/CeA/ecommerce/Affiliated.wsdl'
+		service='{http://www.cea.com.br/EBS/CEA/ecommerce/affiliated/v1}Affiliated_Service'
+		port='{http://www.cea.com.br/EBS/CEA/ecommerce/affiliated/v1}Affiliated_Service'
+		binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+		url-pattern='/service/affiliated' />
+
+</endpoints>

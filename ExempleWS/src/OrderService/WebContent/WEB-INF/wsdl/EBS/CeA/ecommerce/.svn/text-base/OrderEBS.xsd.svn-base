@@ -1,0 +1,41 @@
+<schema elementFormDefault="qualified" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/order/v1" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/order/v1" 
+	xmlns:ebo="http://www.cea.com.br/EBO/CEA/ecommerce/order/v1">
+
+	<import schemaLocation="../../../EBO/CeA/v1/ecommerce/OrderEBO.xsd" 
+		namespace="http://www.cea.com.br/EBO/CEA/ecommerce/order/v1"/>
+	
+	<element name="OrderRequest">
+		<complexType>
+			<sequence>
+				<element name="order" type="ebo:Order"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="OrderResponse">
+		<complexType>
+			<sequence>
+				<element name="acknowledge" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="OrderConfirmRequest">
+		<complexType>
+			<sequence>
+				<element name="orderId" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="OrderConfirmResponse">
+		<complexType>
+			<sequence>
+				<element name="acknowledge" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

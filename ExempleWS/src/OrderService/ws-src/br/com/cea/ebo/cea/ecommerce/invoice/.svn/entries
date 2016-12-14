@@ -1,0 +1,31 @@
+10
+
+dir
+160
+svn+ssh://10.16.1.107/svn/repositories/ecommerce/source/java/EcommerceService/ws-src/br/com/cea/ebo/cea/ecommerce/invoice
+svn+ssh://10.16.1.107/svn/repositories/ecommerce
+
+
+
+2015-01-19T14:16:58.394073Z
+139
+br3bsb
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3f9d1e19-ae08-0510-b938-31a5c6f0c2dc
+
+v1
+dir
+

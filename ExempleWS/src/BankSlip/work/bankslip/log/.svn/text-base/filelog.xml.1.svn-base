@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2014-12-19T10:49:29</date>
+  <millis>1418993369407</millis>
+  <sequence>0</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Processo de CNAB iniciado dos arquivos CN11124A[1]_11122014.ret e CN11124A[1]_11122014.ret</message>
+</record>
+<record>
+  <date>2014-12-19T10:49:30</date>
+  <millis>1418993370171</millis>
+  <sequence>1</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Pedido [500997] enviado com sucesso.</message>
+</record>
+<record>
+  <date>2014-12-19T10:49:30</date>
+  <millis>1418993370256</millis>
+  <sequence>2</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Pedido [501009] enviado com sucesso.</message>
+</record>
+<record>
+  <date>2014-12-19T10:49:30</date>
+  <millis>1418993370257</millis>
+  <sequence>3</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Quantidade de boletos enviados 2</message>
+</record>
+<record>
+  <date>2014-12-19T10:49:30</date>
+  <millis>1418993370260</millis>
+  <sequence>4</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Arquivo tranferido de: C:\work\cea\workspace\java\BankSlip\work\bankslip\in\ecommerce\CN11124A[1]_11122014.ret</message>
+</record>
+<record>
+  <date>2014-12-19T10:49:30</date>
+  <millis>1418993370260</millis>
+  <sequence>5</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>INFO</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>info</method>
+  <thread>10</thread>
+  <message>Arquivo tranferido para: C:\work\cea\workspace\java\BankSlip\work\bankslip\copy\2014_12_19_10_49_29_CN11124A[1]_11122014.ret</message>
+</record>
+</log>

@@ -1,0 +1,179 @@
+<schema elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1" 
+	xmlns:tns="http://www.cea.com.br/EBS/CEA/ecommerce/cartaopl/v1">
+	
+	<complexType name="CartaoPL">
+		<sequence>
+			<element name="IdPgto" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Id do pagamento - Identificador unico da transacao]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="NumPedido" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Numero do pedido]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="NumSeqPedido" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Numero sequencial pedido]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="DtMovLog" type="dateTime">
+				<annotation>
+					<documentation>
+						<![CDATA[Data do movimento do log]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="TipTransac" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[A – Autorização / N – Parcelado]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="PlnCredit">
+				<annotation>
+					<documentation>
+						<![CDATA[
+							01000-ROTATIVO C&A - 0 CICLO
+							03002-PARCELADO C&A 2X S/JUROS
+							03003-PARCELADO C&A 3X S/JUROS
+							03004-PARCELADO C&A 4X S/JUROS
+							03005-PARCELADO C&A 5X S/JUROS
+							03032-CELULAR 2X S/JUROS
+							03033-CELULAR 3X S/JUROS
+							03034-CELULAR 4X S/JUROS
+							03035-CELULAR 5X S/JUROS
+							03036-CELULAR 6X S/JUROS
+							03037-CELULAR 7X S/JUROS
+							03038-CELULAR 8X S/JUROS
+							03039-CELULAR 9X S/JUROS
+							03040-CELULAR 10X S/JUROS
+							01030-CELULAR A VISTA
+						]]>
+					</documentation>
+				</annotation>
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="01000"/>
+						<enumeration value="03002"/>
+						<enumeration value="03003"/>
+						<enumeration value="03004"/>
+						<enumeration value="03005"/>
+						<enumeration value="03032"/>
+						<enumeration value="03033"/>
+						<enumeration value="03034"/>
+						<enumeration value="03035"/>
+						<enumeration value="03036"/>
+						<enumeration value="03037"/>
+						<enumeration value="03038"/>
+						<enumeration value="03039"/>
+						<enumeration value="03040"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="NumCartao" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Numero do cartao]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="VlrPago" type="string">
+				<annotation>
+					<documentation>
+						<![CDATA[Valor pago]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="Data" type="dateTime">
+				<annotation>
+					<documentation>
+						<![CDATA[Data]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="CodOrpag">
+				<annotation>
+					<documentation>
+						<![CDATA[
+							010 - Private Label C&A Brasil
+							011 - ibiCard C&A MasterCard
+							013 - ibiCard C&A Visa
+							016 - ibiCard SIM C&A Mastercard
+							017 - DOTZ ibiCard MasterCard
+						]]>
+					</documentation>
+				</annotation>
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="010"/>
+						<enumeration value="011"/>
+						<enumeration value="013"/>
+						<enumeration value="016"/>
+						<enumeration value="017"/>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="NumParc" type="int">
+				<annotation>
+					<documentation>
+						<![CDATA[Numero de parcelas]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="RespCode" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[Codigo de resposta]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="RetCode" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[Codigo de resposta]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="ReasonCode" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[Codigo de resposta]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="CodAutorizacao" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[Identificador da autorizacao]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="cpf" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[CPF do cliente]]>
+					</documentation>
+				</annotation>
+			</element>
+			<element name="FoneCliente" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						<![CDATA[Fone do cliente]]>
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	
+</schema>

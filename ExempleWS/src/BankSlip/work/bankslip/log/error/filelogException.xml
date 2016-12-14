@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224114</millis>
+  <sequence>13</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>Error no servico BankSlip</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224115</millis>
+  <sequence>14</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224116</millis>
+  <sequence>15</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224117</millis>
+  <sequence>16</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224118</millis>
+  <sequence>17</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>java.lang.reflect.Constructor.newInstance(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224118</millis>
+  <sequence>18</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>com.sun.xml.internal.ws.fault.SOAPFaultBuilder.createException(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224118</millis>
+  <sequence>19</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224119</millis>
+  <sequence>20</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224119</millis>
+  <sequence>21</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>com.sun.xml.internal.ws.client.sei.SEIStub.invoke(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224120</millis>
+  <sequence>22</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>com.sun.proxy.$Proxy30.bankSlip(Unknown Source)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224121</millis>
+  <sequence>23</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.command.ReadFileCNABCommand.execute(ReadFileCNABCommand.java:81)</message>
+</record>
+<record>
+  <date>2014-12-19T10:47:04</date>
+  <millis>1418993224121</millis>
+  <sequence>24</sequence>
+  <logger>br.com.cea.ecommerce.util.LogUtil</logger>
+  <level>SEVERE</level>
+  <class>br.com.cea.ecommerce.util.LogUtil</class>
+  <method>saveLogException</method>
+  <thread>10</thread>
+  <message>br.com.cea.ecommerce.ExecutorManager.main(ExecutorManager.java:27)</message>
+</record>
+</log>

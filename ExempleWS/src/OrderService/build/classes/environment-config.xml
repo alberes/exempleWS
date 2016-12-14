@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<environments>
+	<!--Nome do Datasource a ser utilizado-->
+	<environment name="MENU_DS" variable="menu.ds" default-value="jdbc/MenuDS" />
+	
+	<!-- Nome do schema usado pela API 'cea-menu-lib'-->
+	<environment name="SCHEMA_MENU" variable="schema.menu" default-value="ADMSGU" />
+		
+	<!-- SSO é usado para 'single sign on' pelo componente cea-sso-lib-->
+	<environment name="SSO" variable="sso.client.environment" default-value="PROD-BR" />
+	
+	<!-- REALM é usado pelo compontente cea-security-lib para identificação do AD. 
+	Necessario com o uso do Filtro br.com.cea.security.SecurityHttpFilter-->
+	<environment name="REALM" variable="security.realm" default-value="PROD-BRASIL" />
+	
+	<!-- OBJECT_FACTORY é usado pelo compontente cea-commons-lib para criação dos objetos usando o ObjectFactory.xml-->
+	<environment name="OBJECT_FACTORY" variable="object.factory" default-value="PROD" />
+	
+	<!-- Nome do pais para a qual a aplicação esta sendo execuda-->
+	<environment name="COUNTRY" variable="system.country" default-value="BR" />
+	
+	<!-- variavel usada pelo Log4JPropertyConfigurator, se existir a variavel LOG.DIR no arquivo log4j.properties 
+	entao o resultado é trocado pela informacao encontrada no ambiente -->
+	<environment name="LOG.DIR" variable="user.dir" default-value="/app"/>
+
+	<!-- variavel usada pelo VariavelAmbienteUtil e PropertyExternoUtil do cea-commons, 
+	pode ser usada pela aplicação pra definir o diretorio onde será encontrado arquivos e properties por exemplo.
+	uma opção de configuracao é usar o diretorio de execucao da aplicação, user.dir-->
+	<environment name="DIR.APP" variable="referencia.dir" default-value="C:\\Enviroment\\workspaceInvoice\\InvoiceService\\test"/>
+	
+	<!-- variavel usada pelo Cache do cea-commons, 
+	é usada para encontrar o arquivo ehcache.xml.
+	O arquivo será procurado em: {EHCACHE.DIR}/ehcache.xml, 
+	se nao encontrado entao se procurado em:{EHCACHE.DIR}/conf/ehcache.xml
+	O ehcache presente no classpath, se encontrado, é mesclado com o presente no diretorio.
+	-->
+	<environment name="EHCACHE.DIR" variable="user.dir" default-value="/app"/>
+	
+</environments>	
+
+
+
+

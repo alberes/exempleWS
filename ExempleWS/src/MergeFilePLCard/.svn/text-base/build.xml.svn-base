@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="help" name="MergeFilePLCard">
+   
+    <property name="app.name" value="MergeFilePLCard" />
+    <property name="classes.dir" location="bin" />
+    <property name="src.dir" location="src" />
+    <property name="app.dir" location="app" />
+	<property name="lib.dir" location="lib" />
+   
+    <target name="help">
+        <echo message="********************************************************************" />
+        <echo message="**             UTILIZE UM OU MAIS TARGETS ABAIXO...               **" />
+        <echo message="********************************************************************" />
+        <echo message="" />
+        <echo message="** PREPRACAO DOS OBJETOS DO SISTEMA ********************************" />
+        <echo message="" />
+        <echo message="cleanAll......Exclui e cria os diretorios" />
+        <echo message="" />
+        <echo message="** GERACAO DE OBJETOS DO SISTEMA ***********************************" />
+        <echo message="" />
+        <echo message="jar........Gera o JAR do Sistema" />
+        <echo message="" />
+    </target>
+	
+	<path id="build.classpath">
+	    <fileset dir="${lib.dir}">
+	      <include name="**/*.jar" />
+	    </fileset>
+	</path>
+	
+    <target name="cleanAll">
+        <delete dir="${classes.dir}" />
+        <!--<delete dir="${app.dir}" />-->
+        <mkdir dir="${classes.dir}" />
+        <!--<mkdir dir="${app.dir}" />-->
+    </target>
+	
+    <target depends="cleanAll" name="compile" description="compile the source " >
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="build.classpath"/>
+      </target>
+   
+    <target depends="compile" name="jar" description="Generates MergeFilePLCard.jar">
+        <delete file="${app.dir}/${app.name}.jar" />
+        <jar jarfile="${app.dir}/${app.name}.jar" compress="true" basedir="${classes.dir}">
+        	<manifest>
+        		<attribute name="Main-Class" value="br.com.cea.ecommerce.Base2Manager"/>
+        		<attribute name="Class-Path" value=". lib/ojdbc6.jar lib/cea-commons-lib.4.6.0.jar" />
+        	</manifest>
+        </jar>
+    	<!--<copydir src="${lib.dir}" dest="${app.dir}/lib"/>-->
+    </target>
+   
+</project>

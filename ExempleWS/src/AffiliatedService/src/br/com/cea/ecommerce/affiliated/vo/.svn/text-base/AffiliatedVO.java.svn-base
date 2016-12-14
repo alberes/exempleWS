@@ -1,0 +1,131 @@
+package br.com.cea.ecommerce.affiliated.vo;
+
+import java.util.Date;
+
+public class AffiliatedVO {
+
+	private Long niPes;
+	
+	private String cdEmp;
+	
+	private Long nuChp;
+	
+	private String noPes;
+	
+	private String cdLoc;
+	
+	private String nuCpf;
+	
+	private Date dtAds;
+	
+	private Date dtDss;
+	
+	private String cdSx;
+	
+	private Long nrMnq;
+	
+	private Long nrCal;
+	
+	private String cdCntCst;
+
+	public AffiliatedVO() {
+		super();
+	}
+
+	public Long getNiPes() {
+		return niPes;
+	}
+
+	public void setNiPes(Long niPes) {
+		this.niPes = niPes;
+	}
+
+	public String getCdEmp() {
+		return cdEmp;
+	}
+
+	public void setCdEmp(String cdEmp) {
+		this.cdEmp = cdEmp;
+	}
+
+	public Long getNuChp() {
+		return nuChp;
+	}
+
+	public void setNuChp(Long nuChp) {
+		this.nuChp = nuChp;
+	}
+
+	public String getNoPes() {
+		return noPes;
+	}
+
+	public void setNoPes(String noPes) {
+		this.noPes = noPes;
+	}
+
+	public String getCdLoc() {
+		return cdLoc;
+	}
+
+	public void setCdLoc(String cdLoc) {
+		this.cdLoc = cdLoc;
+	}
+
+	public String getNuCpf() {
+		return nuCpf;
+	}
+
+	public void setNuCpf(String nuCpf) {
+		this.nuCpf = nuCpf;
+	}
+
+	public Date getDtAds() {
+		return dtAds;
+	}
+
+	public void setDtAds(Date dtAds) {
+		this.dtAds = dtAds;
+	}
+
+	public Date getDtDss() {
+		return dtDss;
+	}
+
+	public void setDtDss(Date dtDss) {
+		this.dtDss = dtDss;
+	}
+
+	public String getCdSx() {
+		return cdSx;
+	}
+
+	public void setCdSx(String cdSx) {
+		this.cdSx = cdSx;
+	}
+
+	public Long getNrMnq() {
+		return nrMnq;
+	}
+
+	public void setNrMnq(Long nrMnq) {
+		this.nrMnq = nrMnq;
+	}
+
+	public Long getNrCal() {
+		return nrCal;
+	}
+
+	public void setNrCal(Long nrCal) {
+		this.nrCal = nrCal;
+	}
+
+	public String getCdCntCst() {
+		return cdCntCst;
+	}
+
+	public void setCdCntCst(String cdCntCst) {
+		this.cdCntCst = cdCntCst;
+	}
+	
+}
